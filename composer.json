@@ -1,7 +1,7 @@
 {
   "name": "gsomoza/deployer-artifact",
   "description": "Deploys Zip and Tar artifacts using Deployer.org",
-  "minimum-stability": "rc",
+  "minimum-stability": "stable",
   "license": "BSD-3-Clause",
   "version": "0.1.0",
   "authors": [
@@ -11,12 +11,14 @@
     }
   ],
   "require": {
-    "php": "^7.4||^8.0",
-    "deployer/deployer": "^7.0"
+    "php": "^7.4||^8.0"
+  },
+  "require-dev": {
+    "deployer/deployer": "^7.0@rc"
   },
   "autoload": {
     "files": [
-      "src/artifact.php"
+      "autoload.php"
     ]
   }
 }

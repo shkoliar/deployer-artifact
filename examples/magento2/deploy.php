@@ -4,7 +4,12 @@
 namespace Deployer;
 
 import('recipe/magento2.php');
-// "artifact" recipe is already autoloaded
+import(__DIR__ . '/vendor/autoload.php'); // autoload your project dependencies...
+import('recipe/artifact.php'); // ... which will include our recipe
+
+// Set the path to the local artifact file that you want to upload to the server
+set('artifact_path', __DIR__ . '/artifacts/build.zip');
+// (you could also supply this as an argument: dep deploy -o artifact_path=$(pwd)/artifacts/build.zip
 
 // Redefine deploy procedure to avoid tasks we don't need from the magento2 recipe
 task('deploy', [
