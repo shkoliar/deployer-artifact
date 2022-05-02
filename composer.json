@@ -1,0 +1,22 @@
+{
+  "name": "gsomoza/deployer-artifact",
+  "description": "Deploys Zip and Tar artifacts using Deployer.org",
+  "minimum-stability": "rc",
+  "license": "BSD-3-Clause",
+  "version": "0.1.0",
+  "authors": [
+    {
+      "name": "Gabriel Somoza",
+      "email": "gabriel@somoza.me"
+    }
+  ],
+  "require": {
+    "php": "^7.4||^8.0",
+    "deployer/deployer": "^7.0"
+  },
+  "autoload": {
+    "files": [
+      "src/artifact.php"
+    ]
+  }
+}
