@@ -1,5 +1,6 @@
 <?php
-/* (c) Gabriel Somoza <gabriel@somoza.me>
+/*
+ * (c) Gabriel Somoza <gabriel@somoza.me>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -9,23 +10,27 @@ declare(strict_types=1);
 
 namespace Deployer;
 
-import(__DIR__ . '/artifact_fetch.php');
-import(__DIR__ . '/artifact_upload.php');
-
-use Symfony\Component\Console\Input\InputOption;
+import(__DIR__ . '/artifact_extract.php');
 
 add('recipes', ['artifact']);
 
-option('artifact', null, InputOption::VALUE_REQUIRED, 'The artifact to upload');
-
+/**
+ * artifact_upload_dir: path to the directory inside which the artifact will be uploaded
+ */
 set('artifact_upload_dir', '{{deploy_path}}/.dep/artifact');
 
+/**
+ * artifact_dest_path: the final path of the artifact in the host
+ */
+set('artifact_dest_path', function() {
+    $uploadDir = \rtrim(get('artifact_upload_dir'), '/') ;
+    $artifactSourcePath = get('target');
+    return $uploadDir . '/' . \basename($artifactSourcePath);
+});
+
+// TASKS
 task('deploy:artifact', [
-    'artifact:fetch',
-    'artifact:upload',
+    'artifact:deploy',
     'artifact:extract',
 ]);
 
-task('artifact:info', function() {
-    info("deploying artifact <fg=magenta;options=bold>{{artifact_path}}</>");
-});

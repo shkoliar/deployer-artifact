@@ -3,7 +3,7 @@
   "description": "Deploys Zip and Tar artifacts using Deployer.org",
   "minimum-stability": "stable",
   "license": "BSD-3-Clause",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "authors": [
     {
       "name": "Gabriel Somoza",
@@ -11,7 +11,8 @@
     }
   ],
   "require": {
-    "php": "^7.4||^8.0"
+    "php": "^7.4||^8.0",
+    "aws/aws-sdk-php": "^3.222"
   },
   "require-dev": {
     "deployer/deployer": "^7.0@rc"

@@ -4,17 +4,20 @@
 namespace Deployer;
 
 import('recipe/magento2.php');
-import(__DIR__ . '/vendor/autoload.php'); // autoload your project dependencies...
-import('recipe/artifact.php'); // ... which will include our recipe
+import(__DIR__ . '/../../vendor/autoload.php'); // autoload your project dependencies...
+import('recipe/artifact.php'); // ... include the base recipe
+import('recipe/artifact_upload.php'); // ... deploy from local file
 
 // Set the path to the local artifact file that you want to upload to the server
-set('artifact_path', __DIR__ . '/artifacts/build.zip');
 // (you could also supply this as an argument: dep deploy -o artifact_path=$(pwd)/artifacts/build.zip
+set('target', __DIR__ . '/artifacts/build.zip');
+
+set('deploy_path', '~/your-webroot');
 
 // Redefine deploy procedure to avoid tasks we don't need from the magento2 recipe
 task('deploy', [
     // Being [deploy:prepare] replacements
-    'artifact:info', // instead of deploy:info
+    //'artifact:info', // instead of deploy:info
     'deploy:setup',
     'deploy:lock',
     'deploy:release',
@@ -39,3 +42,7 @@ task('deploy', [
     // End [deploy:magento] replacements
     'deploy:publish',
 ]);
+
+after('deploy:symlink', 'magento:maintenance:disable');
+
+localhost();
