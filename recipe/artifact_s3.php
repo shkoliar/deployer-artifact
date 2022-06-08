@@ -56,7 +56,7 @@ task('artifact:s3:deploy', function () {
 
     run("mkdir -p ${uploadDir}");
     info("Downloading artifact from S3, this might take a while...");
-    run("wget -q -c -O {$uploadDir}/{$filename} \"{$signedUrl}\"");
+    run("rm -f ${uploadDir}/{$filename} && wget -q -O {$uploadDir}/{$filename} \"{$signedUrl}\"");
 });
 
 task('artifact:deploy', [
