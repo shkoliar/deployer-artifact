@@ -3,7 +3,6 @@
   "description": "Deploys Zip and Tar artifacts using Deployer.org",
   "minimum-stability": "stable",
   "license": "BSD-3-Clause",
-  "version": "0.2.0",
   "authors": [
     {
       "name": "Gabriel Somoza",

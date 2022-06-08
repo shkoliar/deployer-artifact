@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - Remove an existing remote artifact to force a re-download, because the wget -c (continue) option doesn't handle 
 properly a situation where the S3 file is completely different but with the same filename.
+- Remove version from composer.json
 
 ## [0.2.0] - 2022-05-12
 ### Added
