@@ -54,9 +54,9 @@ task('artifact:s3:deploy', function () {
     $key = get('aws-s3-key');
     $filename = \basename($key);
 
-    run("mkdir -p ${uploadDir}");
+    run("mkdir -p {$uploadDir}");
     info("Downloading artifact from S3, this might take a while...");
-    run("rm -f ${uploadDir}/{$filename} && wget -q -O {$uploadDir}/{$filename} \"{$signedUrl}\"");
+    run("rm -f {$uploadDir}/{$filename} && wget -q -O {$uploadDir}/{$filename} \"{$signedUrl}\"");
 });
 
 task('artifact:deploy', [

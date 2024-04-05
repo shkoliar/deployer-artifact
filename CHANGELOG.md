@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.2] - 2024-04-05
+### Fixed
+-  Fix php 8.2 deprecation notice: using ${var}
+
 ## [0.2.1] - 2022-06-09
 ### Fixed
 - Remove an existing remote artifact to force a re-download, because the wget -c (continue) option doesn't handle 
